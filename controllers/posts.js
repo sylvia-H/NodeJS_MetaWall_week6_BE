@@ -57,16 +57,16 @@ const PostController = {
       .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
   async editPosts(req, res) {
-      const { body } = req;
-      const { id } = req.params;
-      await Post.findByIdAndUpdate(id, body)
-        .then((result) => {
-          if (!result) {
-            return appError(400, 'Bad Request Error - Failed to get data', next);
-          }
-          PostController.getPosts(req, res);
-        })
-        .catch(() => appError(400, 'Bad Request Error - ID not found', next));
+    const { body } = req;
+    const { id } = req.params;
+    await Post.findByIdAndUpdate(id, body)
+      .then((result) => {
+        if (!result) {
+          return appError(400, 'Bad Request Error - Failed to get data', next);
+        }
+        PostController.getPosts(req, res);
+      })
+      .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
 };
 

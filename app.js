@@ -4,6 +4,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+// Swagger
+const swaggerUI = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
@@ -28,6 +32,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter);
+
+// Generate Swagger API-Doc
+app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 // catch 404
 app.use(function(req, res, next) {
