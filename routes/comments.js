@@ -27,7 +27,7 @@ router.post(
 router.delete(
   '/',
   /**
-   * #swagger.tags = ['Comments - 貼文評論']
+   * #swagger.tags = ['後台：Comments - 貼文評論']
    * #swagger.description = '刪除所有貼文評論資訊 API'
    * #swagger.security = [{ "api_key": [] }]
    */

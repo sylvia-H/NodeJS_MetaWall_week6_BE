@@ -44,7 +44,7 @@ router.post(
 router.delete(
   '/',
   /**
-   * #swagger.tags = ['Posts - 貼文']
+   * #swagger.tags = ['後台：Posts - 貼文']
    * #swagger.description = '刪除所有貼文 API'
    * #swagger.security = [{ "api_key": [] }]
    */
