@@ -35,9 +35,9 @@ const PostController = {
       await Post.create({
         author: req.user._id,
         content: req.body.content,
-        tags: [req.body.tags || 'general'],
-        image: [req.body.image || ''],
-        privacy: [req.body.privacy || 'private'],
+        tags: req.body.tags || 'general',
+        image: req.body.image || '',
+        privacy: req.body.privacy || 'private',
       });
       PostController.getPosts(req, res);
     } else {
