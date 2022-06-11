@@ -40,7 +40,7 @@ const isAuth = asyncErrorHandler(async (req, res, next) => {
 
 const isAdmin = asyncErrorHandler(async (req, res, next) => {
   // 驗證 header 是否夾帶 api_key 資訊
-  const AUTH = req.headers.X-API-KEY;
+  const AUTH = req.headers[X-API-KEY];
   if (!AUTH && AUTH !== 'MetaWall_admin') {
     return appError(
       401,
