@@ -44,7 +44,7 @@ const isAdmin = asyncErrorHandler(async (req, res, next) => {
   if (!AUTH && AUTH !== 'MetaWall_admin') {
     return appError(
       401,
-      'Unauthorized Error - Permission denied. Only system administrators have access privileges.',
+      'Unauthorized Error - Permission denied.',
       next
     );
   }
