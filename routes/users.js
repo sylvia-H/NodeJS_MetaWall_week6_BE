@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const asyncErrorHandler = require('../helper/asyncErrorHandler');
+const { isAuth, isAdmin } = require('../helper/auth');
 const UserController = require('../controllers/users');
 
 router.post(
@@ -27,6 +28,7 @@ router.post(
    * #swagger.tags = ['Users - 用戶']
    * #swagger.description = '使用者修改密碼 API'
    */
+  isAuth,
   asyncErrorHandler(UserController.updatePassword)
 );
 
@@ -36,6 +38,7 @@ router.get(
    * #swagger.tags = ['Users - 用戶']
    * #swagger.description = '使用者取得個人檔案頁資料 API'
    */
+  isAuth,
   asyncErrorHandler(UserController.getProfile)
 );
 
@@ -46,6 +49,8 @@ router.get(
    * #swagger.description = '取得所有用戶資訊 API'
    * #swagger.security = [{ "api_key": [] }]
    */
+  isAuth,
+  isAdmin,
   asyncErrorHandler(UserController.getUsers)
 );
 
@@ -66,6 +71,8 @@ router.post(
    * #swagger.description = '新增單筆用戶資訊 API'
    * #swagger.security = [{ "api_key": [] }]
    */
+  isAuth,
+  isAdmin,
   asyncErrorHandler(UserController.createUsers)
 );
 
@@ -76,6 +83,8 @@ router.delete(
    * #swagger.description = '刪除所有用戶資訊 API'
    * #swagger.security = [{ "api_key": [] }]
    */
+  isAuth,
+  isAdmin,
   asyncErrorHandler(UserController.deleteAllUsers)
 );
 
@@ -86,6 +95,8 @@ router.delete(
    * #swagger.description = '刪除單一用戶資訊 API'
    * #swagger.security = [{ "api_key": [] }]
    */
+  isAuth,
+  isAdmin,
   asyncErrorHandler(UserController.deleteUsers)
 );
 
@@ -96,6 +107,8 @@ router.patch(
    * #swagger.description = '修改單一用戶資訊 API'
    * #swagger.security = [{ "api_key": [] }]
    */
+  isAuth,
+  isAdmin,
   asyncErrorHandler(UserController.editUsers)
 );
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const asyncErrorHandler = require('../helper/asyncErrorHandler');
+const { isAuth, isAdmin } = require('../helper/auth');
 const PostController = require('../controllers/posts');
 
 router.get(
@@ -14,6 +15,7 @@ router.get(
       }
     }
     */
+  isAuth,
   asyncErrorHandler(PostController.getPosts)
 );
 
@@ -35,6 +37,7 @@ router.post(
       }
     }
   */
+  isAuth,
   asyncErrorHandler(PostController.createPosts)
 );
 
@@ -45,6 +48,8 @@ router.delete(
    * #swagger.description = '刪除所有貼文 API'
    * #swagger.security = [{ "api_key": [] }]
    */
+  isAuth,
+  isAdmin,
   asyncErrorHandler(PostController.deleteAllPosts)
 );
 
@@ -54,6 +59,7 @@ router.delete(
    * #swagger.tags = ['Posts - 貼文']
    * #swagger.description = '刪除單一貼文 API'
    */
+  isAuth,
   asyncErrorHandler(PostController.deletePosts)
 );
 
@@ -63,6 +69,7 @@ router.patch(
    * #swagger.tags = ['Posts - 貼文']
    * #swagger.description = '修改單一貼文 API'
    */
+  isAuth,
   asyncErrorHandler(PostController.editPosts)
 );
 
