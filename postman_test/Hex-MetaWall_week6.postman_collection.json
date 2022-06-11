@@ -57,7 +57,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"author\": \"Sylvia-H\",\r\n    \"content\": \"外面看起來就超冷.... 我決定回被窩繼續睡....>.<\",\r\n    \"tags\": [\"general\"],\r\n    \"image\": \"\",\r\n    \"likes\": 0,\r\n    \"comments\": 0,\r\n    \"privacy\": \"private\"\r\n}",
+							"raw": "{\r\n    \"content\": \"外面看起來就超冷.... 我決定回被窩繼續睡....>.<\",\r\n    \"tags\": [\"general\"],\r\n    \"image\": \"\",\r\n    \"privacy\": \"private\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,7 +159,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_id\": \"6298ccdc2f75e1bf5c347d51\",\r\n    \"author\": {\r\n        \"_id\": \"6298be0a86d7d2a709c289e4\",\r\n        \"name\": \"阿爾敏\",\r\n        \"avatar\": \"https://avatarfiles.alphacoders.com/115/115265.png\"\r\n    },\r\n    \"content\": \"各位我有一個作戰計畫...\",\r\n    \"tags\": [\r\n        \"general\"\r\n    ],\r\n    \"image\": \"https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80\",\r\n    \"likes\": 1,\r\n    \"comments\": [],\r\n    \"privacy\": \"private\",\r\n    \"createdAt\": \"2022-06-02T14:44:44.972Z\",\r\n    \"updatedAt\": \"2022-06-02T16:51:13.726Z\"\r\n}",
+							"raw": "{\r\n    \"content\": \"各位我有一個作戰計畫...\",\r\n    \"tags\": [\r\n        \"general\"\r\n    ],\r\n    \"image\": \"https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80\",\r\n    \"privacy\": \"private\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -167,13 +167,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_API}}/posts/",
+							"raw": "{{BASE_API}}/posts/6298ccdc2f75e1bf5c347d51",
 							"host": [
 								"{{BASE_API}}"
 							],
 							"path": [
 								"posts",
-								""
+								"6298ccdc2f75e1bf5c347d51"
 							]
 						}
 					},
@@ -203,7 +203,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"NewUser0\",\r\n    \"email\": \"ppp@gmail.com\",\r\n    \"password\": \"1q2w3e4r\"\r\n}",
+							"raw": "{\r\n    \"name\": \"NewUser1\",\r\n    \"email\": \"zzz@gmail.com\",\r\n    \"password\": \"qawsedrf\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
