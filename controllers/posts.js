@@ -4,12 +4,16 @@ const Post = require('../model/post');
 
 const PostController = {
   async getPosts(req, res) {
+    // 過濾出自己的貼文，以及設為公開的貼文
+    const permission = {
+      $or: [{ author: { _id: req.user._id } }, { privacy: 'public' }],
+    };
     // 貼文時間序列
     const timeSort = req.query.timeSort === 'asc' ? 'createdAt' : '-createdAt';
     // 搜尋貼文內容
     const q =
       req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
-    const posts = await Post.find(q)
+    const posts = await Post.find(permission).find(q)
       .populate({
         path: 'author',
         select: 'name avatar',
