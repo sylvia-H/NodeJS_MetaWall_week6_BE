@@ -59,7 +59,7 @@ const isAdmin = asyncErrorHandler(async (req, res, next) => {
   }
 });
 
-const generateJWTtoken = (user, statusCode, res) => {
+const generateJWTToken = (user, statusCode, res) => {
   // 產生 JWT token
   const token = jwt.sign(
     { id: user._id, role: user.role },
@@ -77,4 +77,4 @@ const generateJWTtoken = (user, statusCode, res) => {
   });
 };
 
-module.exports = { isAuth, isAdmin, generateJWTtoken };
+module.exports = { isAuth, isAdmin, generateJWTToken };

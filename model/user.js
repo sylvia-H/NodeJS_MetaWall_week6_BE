@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      required: [true, '請上傳您的頭像圖片位址'],
+      default: 'https://i.imgur.com/K3dyy79.png',
     },
     sex: {
       type: String,
