@@ -15,6 +15,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, '請上傳您的頭像圖片位址'],
     },
+    sex: {
+      type: String,
+      enum: ['Male','Female'],
+    },
+    password: {
+      type: String,
+      required: [true, '請輸入您的密碼'],
+      minlength: 8,
+      select: false,
+    },
+    role: {
+      type: String,
+      default: 'user',
+      enum: ['user','admin'],
+    },
   },
   {
     timestamps: true,

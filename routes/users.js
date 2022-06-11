@@ -1,13 +1,50 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const asyncErrorHandler = require('../helper/asyncErrorHandler');
 const UserController = require('../controllers/users');
+
+router.post(
+  '/sign_up',
+  /**
+   * #swagger.tags = ['Users - 用戶']
+   * #swagger.description = '使用者註冊 API'
+   */
+  asyncErrorHandler(UserController.signUp)
+);
+
+router.post(
+  '/sign_in',
+  /**
+   * #swagger.tags = ['Users - 用戶']
+   * #swagger.description = '使用者登入 API'
+   */
+  asyncErrorHandler(UserController.signIn)
+);
+
+router.post(
+  '/updatePassword',
+  /**
+   * #swagger.tags = ['Users - 用戶']
+   * #swagger.description = '使用者修改密碼 API'
+   */
+  asyncErrorHandler(UserController.updatePassword)
+);
+
+router.get(
+  '/profile',
+  /**
+   * #swagger.tags = ['Users - 用戶']
+   * #swagger.description = '使用者取得個人檔案頁資料 API'
+   */
+  asyncErrorHandler(UserController.getProfile)
+);
 
 router.get(
   '/',
   /**
-   * #swagger.tags = ['Users - 用戶']
+   * #swagger.tags = ['後台：Users - 用戶']
    * #swagger.description = '取得所有用戶資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(UserController.getUsers)
 );
@@ -15,8 +52,9 @@ router.get(
 router.get(
   '/:id',
   /**
-   * #swagger.tags = ['Users - 用戶']
+   * #swagger.tags = ['後台：Users - 用戶']
    * #swagger.description = '取得單一用戶資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(UserController.getUsers)
 );
@@ -24,8 +62,9 @@ router.get(
 router.post(
   '/',
   /**
-   * #swagger.tags = ['Users - 用戶']
+   * #swagger.tags = ['後台：Users - 用戶']
    * #swagger.description = '新增單筆用戶資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(UserController.createUsers)
 );
@@ -33,8 +72,9 @@ router.post(
 router.delete(
   '/',
   /**
-   * #swagger.tags = ['Users - 用戶']
+   * #swagger.tags = ['後台：Users - 用戶']
    * #swagger.description = '刪除所有用戶資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(UserController.deleteAllUsers)
 );
@@ -42,8 +82,9 @@ router.delete(
 router.delete(
   '/:id',
   /**
-   * #swagger.tags = ['Users - 用戶']
+   * #swagger.tags = ['後台：Users - 用戶']
    * #swagger.description = '刪除單一用戶資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(UserController.deleteUsers)
 );
@@ -51,8 +92,9 @@ router.delete(
 router.patch(
   '/:id',
   /**
-   * #swagger.tags = ['Users - 用戶']
+   * #swagger.tags = ['後台：Users - 用戶']
    * #swagger.description = '修改單一用戶資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(UserController.editUsers)
 );

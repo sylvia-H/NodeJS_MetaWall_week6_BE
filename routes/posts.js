@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const asyncErrorHandler = require('../helper/asyncErrorHandler');
 const PostController = require('../controllers/posts');
 
@@ -43,6 +43,7 @@ router.delete(
   /**
    * #swagger.tags = ['Posts - 貼文']
    * #swagger.description = '刪除所有貼文 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(PostController.deleteAllPosts)
 );

@@ -12,46 +12,101 @@
     "https"
   ],
   "securityDefinitions": {
-    "apiKeyAuth": {
+    "api_key": {
       "type": "apiKey",
-      "in": "headers",
-      "name": "authorization",
-      "description": "請加上 API Token"
+      "in": "header",
+      "name": "X-API-KEY",
+      "description": "system administrators's access permission"
     }
   },
   "consumes": [],
   "produces": [],
   "paths": {
-    "/users/": {
-      "get": {
-        "tags": [
-          "Users - 用戶"
-        ],
-        "description": "取得所有用戶資訊 API",
-        "parameters": [],
-        "responses": {}
-      },
+    "/users/sign_up": {
       "post": {
         "tags": [
           "Users - 用戶"
         ],
-        "description": "新增單筆用戶資訊 API",
+        "description": "使用者註冊 API",
         "parameters": [],
         "responses": {}
-      },
-      "delete": {
+      }
+    },
+    "/users/sign_in": {
+      "post": {
         "tags": [
           "Users - 用戶"
         ],
-        "description": "刪除所有用戶資訊 API",
+        "description": "使用者登入 API",
         "parameters": [],
         "responses": {}
+      }
+    },
+    "/users/updatePassword": {
+      "post": {
+        "tags": [
+          "Users - 用戶"
+        ],
+        "description": "使用者修改密碼 API",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/profile": {
+      "get": {
+        "tags": [
+          "Users - 用戶"
+        ],
+        "description": "使用者取得個人檔案頁資料 API",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [
+          "後台：Users - 用戶"
+        ],
+        "description": "取得所有用戶資訊 API",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "後台：Users - 用戶"
+        ],
+        "description": "新增單筆用戶資訊 API",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "後台：Users - 用戶"
+        ],
+        "description": "刪除所有用戶資訊 API",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     },
     "/users/{id}": {
       "get": {
         "tags": [
-          "Users - 用戶"
+          "後台：Users - 用戶"
         ],
         "description": "取得單一用戶資訊 API",
         "parameters": [
@@ -62,11 +117,16 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       },
       "delete": {
         "tags": [
-          "Users - 用戶"
+          "後台：Users - 用戶"
         ],
         "description": "刪除單一用戶資訊 API",
         "parameters": [
@@ -77,11 +137,16 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       },
       "patch": {
         "tags": [
-          "Users - 用戶"
+          "後台：Users - 用戶"
         ],
         "description": "修改單一用戶資訊 API",
         "parameters": [
@@ -92,7 +157,12 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       }
     },
     "/posts/": {

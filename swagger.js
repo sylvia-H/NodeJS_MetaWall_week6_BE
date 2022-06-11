@@ -15,6 +15,14 @@ const doc = {
       description: '請加上 API Token',
     },
   },
+  securityDefinitions: {
+    api_key: {
+      type: 'apiKey',
+      in: 'header', // can be 'header', 'query' or 'cookie'
+      name: 'X-API-KEY', // name of the header, query parameter or cookie
+      description: 'system administrators\'s access permission'
+    }
+  },
   definitions: {
     getPosts_Schema: {
       _id: '6298cd452f75e1bf5c347d55',

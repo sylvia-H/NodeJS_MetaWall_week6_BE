@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const asyncErrorHandler = require('../helper/asyncErrorHandler');
 const CommentController = require('../controllers/comments');
 
@@ -26,6 +26,7 @@ router.delete(
   /**
    * #swagger.tags = ['Comments - 貼文評論']
    * #swagger.description = '刪除所有貼文評論資訊 API'
+   * #swagger.security = [{ "api_key": [] }]
    */
   asyncErrorHandler(CommentController.deleteAllComments)
 );
