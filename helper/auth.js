@@ -8,10 +8,8 @@ const isAuth = asyncErrorHandler(async (req, res, next) => {
   // 驗證 token 是否存在
   let token;
   const AUTH = req.headers.authorization;
-  console.log(AUTH);
   if (AUTH && AUTH.startsWith('Bearer')) {
     token = AUTH.split(' ')[1];
-    console.log(token);
   }
 
   if (!token) {
