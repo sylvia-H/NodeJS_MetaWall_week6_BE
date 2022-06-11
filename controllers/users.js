@@ -85,13 +85,30 @@ const UserController = {
       .catch(() => appError(400, 'Bad Request Error - ID not found', next));
   },
   async getProfile(req, res) {
-    res.status(200),
-      json({
-        status: 'success',
-        user: req.user,
-      });
+    if (!req.user) {
+      return appError(
+        400,
+        'Bad Request Error - Failed to get data.',
+        next
+      );
+    }
+    successHandler(res, req.user);
   },
   async editProfile(req, res) {
+    if (!req.user) {
+      return appError(
+        401,
+        'Bad Request Error - Please login again.',
+        next
+      );
+    }
+    if (!req.body) {
+      return appError(
+        400,
+        'Bad Request Error - Required information not filled.',
+        next
+      );
+    }
     const { name, sex } = req.body;
     // 更新暱稱 & 性別
     await User.findByIdAndUpdate(req.user._id, { name, sex })
