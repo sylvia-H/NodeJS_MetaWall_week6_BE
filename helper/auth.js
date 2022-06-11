@@ -32,7 +32,8 @@ const isAuth = asyncErrorHandler(async (req, res, next) => {
   });
 
   // 將 user 資料夾帶進 req
-  req.user = await User.findById(decode.id);
+  const currentUser = await User.findById(decoded.id);
+  req.user = currentUser;
 
   next();
 });
