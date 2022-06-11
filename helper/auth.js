@@ -7,13 +7,6 @@ const User = require('../model/user');
 const isAuth = asyncErrorHandler(async (req, res, next) => {
   // 驗證 token 是否存在
   let token;
-  if (!req.headers.authorization) {
-    return appError(
-      401,
-      'Unauthorized Error - lacks valid authentication credentials',
-      next
-    );
-  }
   const AUTH = req.headers.authorization;
   if (AUTH && AUTH.startsWith('Bearer')) {
     token = AUTH.split(' ')[1];
@@ -39,7 +32,7 @@ const isAuth = asyncErrorHandler(async (req, res, next) => {
   });
 
   // 將 user 資料夾帶進 req
-  const currentUser = await User.findById(decoded.id);
+  const currentUser = await User.findById(decode.id);
   req.user = currentUser;
 
   next();
