@@ -746,10 +746,6 @@
     "createdPosts_Schema": {
       "type": "object",
       "properties": {
-        "author": {
-          "type": "string",
-          "example": "6298bdcc86d7d2a709c289e1"
-        },
         "content": {
           "type": "string",
           "example": "我一定要成為很棒棒的國王！"
@@ -770,7 +766,6 @@
         }
       },
       "required": [
-        "author",
         "content"
       ]
     },

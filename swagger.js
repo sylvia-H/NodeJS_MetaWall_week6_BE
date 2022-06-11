@@ -130,7 +130,6 @@ const doc = {
       ],
     },
     createdPosts_Schema: {
-      $author: '6298bdcc86d7d2a709c289e1',
       $content: '我一定要成為很棒棒的國王！',
       tags: ['general'],
       image:

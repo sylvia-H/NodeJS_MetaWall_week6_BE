@@ -25,16 +25,22 @@ const PostController = {
     successHandler(res, posts);
   },
   async createPosts(req, res) {
-    const { author, content, tags, image, likes, comments, privacy } = req.body;
-    if (author && content) {
+    // 只能 post 自己的貼文
+    if (!req.user) {
+      return appError(
+        401,
+        'Bad Request Error - Please login again.',
+        next
+      );
+    }
+    // 貼文內容不可為空
+    if (req.body.content) {
       await Post.create({
-        author,
+        author: req.user._id,
         content,
-        tags,
-        image,
-        likes,
-        comments,
-        privacy,
+        tags: [req.body.tags || 'general'],
+        image: [req.body.image || ''],
+        privacy: [req.body.privacy || 'private'],
       });
       PostController.getPosts(req, res);
     } else {
