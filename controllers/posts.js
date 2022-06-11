@@ -13,7 +13,8 @@ const PostController = {
     // 搜尋貼文內容
     const q =
       req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
-    const posts = await Post.find(permission).find(q)
+    const posts = await Post.find(permission)
+      .find(q)
       .populate({
         path: 'author',
         select: 'name avatar',
@@ -27,17 +28,13 @@ const PostController = {
   async createPosts(req, res) {
     // 只能 post 自己的貼文
     if (!req.user) {
-      return appError(
-        401,
-        'Bad Request Error - Please login again.',
-        next
-      );
+      return appError(401, 'Bad Request Error - Please login again.', next);
     }
     // 貼文內容不可為空
     if (req.body.content) {
       await Post.create({
         author: req.user._id,
-        content,
+        content: req.body.content,
         tags: [req.body.tags || 'general'],
         image: [req.body.image || ''],
         privacy: [req.body.privacy || 'private'],
