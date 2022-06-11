@@ -68,6 +68,13 @@ router.patch(
   /**
    * #swagger.tags = ['Posts - 貼文']
    * #swagger.description = '修改單一貼文 API'
+    * #swagger.parameters['body'] = {
+        in: "body",
+        type: "object",
+        required: true,
+        description: "資料格式",
+        schema: { $ref: "#/definitions/editPost_Schema" }
+      }
    */
   isAuth,
   asyncErrorHandler(PostController.editPosts)

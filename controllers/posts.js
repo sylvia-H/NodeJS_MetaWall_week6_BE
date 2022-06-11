@@ -59,6 +59,13 @@ const PostController = {
   async editPosts(req, res) {
     const { body } = req;
     const { id } = req.params;
+    if (!body.content) {
+      return appError(
+        400,
+        'Bad Request Error - The post content cannot be blank.',
+        next
+      );
+    }
     await Post.findByIdAndUpdate(id, body)
       .then((result) => {
         if (!result) {
